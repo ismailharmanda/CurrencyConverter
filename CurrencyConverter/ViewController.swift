@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         
         let session = URLSession.shared
         
+        
         let task = session.dataTask(with: URLRequest(url: url!)) { data, response, error in
             if error != nil {
                 let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -43,9 +44,44 @@ class ViewController: UIViewController {
                 
                 if data != nil {
                     
+                    do{
+                        let response = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! Dictionary<String, Any>
+            
+                        DispatchQueue.main.async {
+                            if let rates = response["rates"] as? [String:Double]{
+                                if let cad = rates["CAD"]{
+                                    self.cadLabel.text = "CAD: \(cad)"
+                                }
+                                if let chf = rates["CHF"]{
+                                    self.chfLabel.text = "CHF: \(chf)"
+                                }
+                                if let gbp = rates["GBP"]{
+                                    self.gbpLabel.text = "GBP: \(gbp)"
+                                }
+                                if let jpy = rates["JPY"]{
+                                    self.jpyLabel.text = "JPY: \(jpy)"
+                                }
+                                if let usd = rates["USD"]{
+                                    self.usdLabel.text = "USD: \(usd)"
+                                }
+                                if let safeTry = rates["TRY"]{
+                                    self.tryLabel.text = "TRY: \(safeTry)"
+                                }
+                                
+                            }
+                        }
+                        
+                    }catch{
+                        print(error)
+                    }
+                    
                 }
             }
+           
         }
+        
+        task.resume()
+        
     }
     
 }
