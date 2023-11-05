@@ -83,6 +83,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Get Rates"/>
+                                <connections>
+                                    <action selector="onPressGetRates:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JYu-mq-cTa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -115,6 +118,14 @@
                             <constraint firstItem="aPa-uu-ZK7" firstAttribute="trailing" secondItem="o89-5h-IHF" secondAttribute="trailing" id="zrA-nK-uRv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cadLabel" destination="aPa-uu-ZK7" id="d6K-dk-fiy"/>
+                        <outlet property="chfLabel" destination="o89-5h-IHF" id="835-pa-KlD"/>
+                        <outlet property="gbpLabel" destination="oqo-xt-NCO" id="kxD-yc-kp2"/>
+                        <outlet property="jpyLabel" destination="gLh-vQ-r1E" id="XSw-Ys-5ap"/>
+                        <outlet property="tryLabel" destination="tOQ-xG-ccD" id="eev-CF-tqt"/>
+                        <outlet property="usdLabel" destination="7bg-W5-8pn" id="0aB-T6-4ie"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
